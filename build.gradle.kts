@@ -1,4 +1,3 @@
-@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     `java-gradle-plugin`
     alias(libs.plugins.dokka)
@@ -10,7 +9,7 @@ plugins {
     alias(libs.plugins.taskTree)
 }
 
-group = "org.danilopianini"
+group = "it.nicolasfarabegoli"
 
 repositories {
     mavenCentral()
@@ -50,21 +49,26 @@ signing {
 }
 
 publishOnCentral {
-    projectLongName.set("Template Kotlin JVM Project")
-    projectDescription.set("A template repository for Kotlin JVM projects")
-    repository("https://maven.pkg.github.com/danysk/${rootProject.name}".toLowerCase()) {
-        user.set("DanySK")
+    projectLongName.set("PulvReAKt in PRIN Commonwears 2023")
+    projectDescription.set("Hot-warm-cold game demo for PRIN Commonwears 2023 using PulvReAKt")
+    repository("https://maven.pkg.github.com/nicolasfara/${rootProject.name}".lowercase()) {
+        user.set("nicolasfara")
         password.set(System.getenv("GITHUB_TOKEN"))
     }
     publishing {
         publications {
             withType<MavenPublication> {
                 pom {
+                    scm {
+                        connection.set("git:git@github.com:nicolasfara/${rootProject.name}")
+                        developerConnection.set("git:git@github.com:nicolasfara/${rootProject.name}")
+                        url.set("https://github.com/nicolasfara/${rootProject.name}")
+                    }
                     developers {
                         developer {
-                            name.set("Danilo Pianini")
-                            email.set("danilo.pianini@gmail.com")
-                            url.set("http://www.danilopianini.org/")
+                            name.set("Nicolas Farabegoli")
+                            email.set("nicolas.farabegoli@gmail.com")
+                            url.set("https://www.nicolasfarabegoli.it/")
                         }
                     }
                 }
