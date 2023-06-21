@@ -22,6 +22,9 @@ import android.os.ParcelUuid
 import android.util.Log
 import com.welie.blessed.BluetoothCentralManager
 
+/**
+ * Sensors that perceive the target using BLE.
+ */
 class WearableSensor(private val context: AndroidContext) : Sensor<SignalStrengthValue> {
     private val bleCallback = object : BluetoothPeripheralManagerCallback() { }
     private val advertisingSettings = AdvertiseSettings.Builder()
@@ -71,6 +74,9 @@ class WearableSensor(private val context: AndroidContext) : Sensor<SignalStrengt
     }
 }
 
+/**
+ * Sensors container.
+ */
 class WearableSensorsContainer(private val aContext: AndroidContext) : SensorsContainer() {
     override val context: Context by inject()
 
@@ -79,6 +85,9 @@ class WearableSensorsContainer(private val aContext: AndroidContext) : SensorsCo
     }
 }
 
+/**
+ * Sensors logic.
+ */
 internal suspend fun wearableSensorsLogic(
     sensors: SensorsContainer,
     behaviourRef: BehaviourRef<SignalStrengthValue>,

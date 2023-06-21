@@ -25,9 +25,15 @@ import org.eclipse.paho.client.mqttv3.MqttMessage
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence
 import org.koin.core.component.inject
 
+/**
+ * The [deviceId] is distant from the source with a certain [distance].
+ */
 @Serializable
 data class DistanceFromSource(val deviceId: String, val distance: Double)
 
+/**
+ * TODO.
+ */
 class WearableComm : Communication<DistanceFromSource> {
     override val context: Context by inject()
 
@@ -73,6 +79,9 @@ class WearableComm : Communication<DistanceFromSource> {
     }
 }
 
+/**
+ * TODO.
+ */
 suspend fun wearableCommLogic(
     comm: Communication<DistanceFromSource>,
     behaviourRef: BehaviourRef<DistanceFromSource>,

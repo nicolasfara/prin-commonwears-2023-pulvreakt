@@ -42,6 +42,9 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlin.time.Duration.Companion.seconds
 
+/**
+ * Main activity.
+ */
 class MainActivity : ComponentActivity() {
     private val bluetoothManager by lazy {
         applicationContext.getSystemService(BLUETOOTH_SERVICE) as BluetoothManager
@@ -68,6 +71,7 @@ class MainActivity : ComponentActivity() {
     }
 
     @Composable
+    @Suppress("FunctionNaming")
     private fun AppLauncherRow(display: DisplayViewModel) {
         Column(modifier = Modifier.padding(all = 7.dp)) {
             Row(modifier = Modifier
@@ -98,8 +102,16 @@ class MainActivity : ComponentActivity() {
                     .padding(all = 10.dp)
                     .fillMaxWidth()
                 ) {
-                    Text("Distance from target", color = Color.Gray, fontSize = 17.sp, modifier = Modifier.padding(7.dp))
-                    Text("%.1f meters".format(display.currentDistance), fontSize = 21.sp, fontWeight = FontWeight.W700, modifier = Modifier.padding(7.dp).align(CenterHorizontally))
+                    Text("Distance from target",
+                        color = Color.Gray,
+                        fontSize = 17.sp,
+                        modifier = Modifier.padding(7.dp)
+                    )
+                    Text("%.1f meters".format(display.currentDistance),
+                        fontSize = 21.sp,
+                        fontWeight = FontWeight.W700,
+                        modifier = Modifier.padding(7.dp).align(CenterHorizontally)
+                    )
                 }
             }
             Row {
@@ -109,6 +121,7 @@ class MainActivity : ComponentActivity() {
     }
 
     @Composable
+    @Suppress("FunctionNaming")
     private fun NeighboursList(neighbours: Map<String, Double>) {
         Column {
             neighbours.forEach { ItemRow(value = it.toPair()) }
@@ -116,13 +129,21 @@ class MainActivity : ComponentActivity() {
     }
 
     @Composable
+    @Suppress("FunctionNaming")
     private fun ItemRow(value: Pair<String, Double>) {
         Card(modifier = Modifier
             .padding(all = 10.dp)
             .fillMaxWidth()) {
             Column(modifier = Modifier.padding(all = 7.dp)) {
-                Text("Device ${value.first}", fontSize = 21.sp, fontWeight = FontWeight.W700, modifier = Modifier.padding(7.dp))
-                Text("Distance from target: %.1f meters".format(value.second), color = Color.Gray, modifier = Modifier.padding(7.dp))
+                Text("Device ${value.first}",
+                    fontSize = 21.sp,
+                    fontWeight = FontWeight.W700,
+                    modifier = Modifier.padding(7.dp)
+                )
+                Text("Distance from target: %.1f meters".format(value.second),
+                    color = Color.Gray,
+                    modifier = Modifier.padding(7.dp)
+                )
             }
         }
     }

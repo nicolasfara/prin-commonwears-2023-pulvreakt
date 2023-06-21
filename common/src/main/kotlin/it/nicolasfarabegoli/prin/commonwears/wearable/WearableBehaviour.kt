@@ -13,10 +13,18 @@ import kotlinx.coroutines.launch
 import org.koin.core.component.inject
 import kotlin.math.pow
 
+/**
+ * Behaviour f the wearable.
+ */
 class WearableBehaviour : Behaviour<Unit, DistanceFromSource, SignalStrengthValue, WearableDisplayInfo, Unit> {
     override val context: Context by inject()
-    private val filter = Filter<Int>(5)
-    private val rssiOneMeter = -64
+    private val filter = Filter<Int>(WINDOW)
+
+    companion object {
+        private const val RSSI_ONE_METER = -64
+        private const val SIGNAL_PATH_LOSS = 10 * 2.5
+        private const val WINDOW = 5
+    }
 
     override fun invoke(
         state: Unit,
@@ -25,13 +33,16 @@ class WearableBehaviour : Behaviour<Unit, DistanceFromSource, SignalStrengthValu
     ): BehaviourOutput<Unit, DistanceFromSource, WearableDisplayInfo, Unit> {
         filter.register(sensedValues.rssi)
         val filteredRssi = filter.get().toInt()
-        val distance = 10.0.pow((rssiOneMeter - filteredRssi) / (10 * 2.5))
+        val distance = 10.0.pow((RSSI_ONE_METER - filteredRssi) / SIGNAL_PATH_LOSS)
         val neighbourDistance = export.associate { it.deviceId to it.distance }
         val displayInfo = WearableDisplayInfo(neighbourDistance, distance)
         return BehaviourOutput(Unit, DistanceFromSource(context.deviceID, distance), displayInfo, Unit)
     }
 }
 
+/**
+ * Behaviour logic.
+ */
 suspend fun wearableBehaviourLogic(
     behaviour: Behaviour<Unit, DistanceFromSource, SignalStrengthValue, WearableDisplayInfo, Unit>,
     @Suppress("UNUSED_PARAMETER") stateRef: StateRef<Unit>,

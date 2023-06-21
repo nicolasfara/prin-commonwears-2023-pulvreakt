@@ -9,6 +9,9 @@ import it.nicolasfarabegoli.pulverization.runtime.componentsref.BehaviourRef
 import kotlinx.coroutines.coroutineScope
 import org.koin.core.component.inject
 
+/**
+ * Actuator that show on the screen information about neighbours.
+ */
 class WearableActuator(private val display: DisplayViewModel) : Actuator<WearableDisplayInfo> {
     override suspend fun actuate(payload: WearableDisplayInfo) {
         Log.i("WearableActuator", "Actuate: $payload")
@@ -16,6 +19,9 @@ class WearableActuator(private val display: DisplayViewModel) : Actuator<Wearabl
     }
 }
 
+/**
+ * Actuators container.
+ */
 class WearableActuatorsContainer(private val display: DisplayViewModel) : ActuatorsContainer() {
     override val context: Context by inject()
 
@@ -24,6 +30,9 @@ class WearableActuatorsContainer(private val display: DisplayViewModel) : Actuat
     }
 }
 
+/**
+ * Wearable actuators logic.
+ */
 suspend fun wearableActuatorsLogic(
     actuators: ActuatorsContainer,
     behaviourRef: BehaviourRef<WearableDisplayInfo>,

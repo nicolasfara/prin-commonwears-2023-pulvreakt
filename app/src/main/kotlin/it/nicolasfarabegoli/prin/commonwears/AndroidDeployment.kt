@@ -18,6 +18,9 @@ import it.nicolasfarabegoli.pulverization.runtime.dsl.model.DeploymentUnitRuntim
 import it.nicolasfarabegoli.pulverization.runtime.dsl.pulverizationRuntime
 
 
+/**
+ * Android PulvReAKt configuration.
+ */
 suspend fun androidRuntimeConfig(
     context: Context,
     display: DisplayViewModel,
