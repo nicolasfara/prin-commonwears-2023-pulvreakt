@@ -41,7 +41,7 @@ class WearableSensor(private val context: AndroidContext) : Sensor<SignalStrengt
 
     private var rssi = 0
 
-    override suspend fun initialize() {
+    override suspend fun initialize(): Unit = coroutineScope {
         val bleManager = context.getSystemService(AndroidContext.BLUETOOTH_SERVICE) as BluetoothManager
         val phManager = BluetoothPeripheralManager(context, bleManager, bleCallback)
         val emptyGattService = BluetoothGattService(
@@ -51,16 +51,18 @@ class WearableSensor(private val context: AndroidContext) : Sensor<SignalStrengt
         phManager.add(emptyGattService)
         phManager.startAdvertising(advertisingSettings, advData, advResponse)
 
+        Log.i("WearableSensor", "Setup completed")
+
         startScanning()
     }
 
     private fun startScanning() {
         btCentralManager.scanForPeripherals(
             { bluetoothPeripheral, scanResult ->
-                Log.i("Sensor", "Scanned ${bluetoothPeripheral.name} ${scanResult.rssi}")
-//                if (bluetoothPeripheral.name == "TODO") {
+                if (bluetoothPeripheral.name == "Findme") {
                     rssi = scanResult.rssi
-//                }
+                    Log.i("Sensor", "RPI ${bluetoothPeripheral.name} ${scanResult.rssi}")
+                }
             },
             {
                 Log.e("Sensor", "Fail to scan: $it")
@@ -73,18 +75,18 @@ class WearableSensorsContainer(private val aContext: AndroidContext) : SensorsCo
     override val context: Context by inject()
 
     override suspend fun initialize() {
-        this += WearableSensor(aContext)
+        this += WearableSensor(aContext).apply { initialize() }
     }
 }
 
 internal suspend fun wearableSensorsLogic(
-    sensors: WearableSensorsContainer,
+    sensors: SensorsContainer,
     behaviourRef: BehaviourRef<SignalStrengthValue>,
 ) = coroutineScope {
     sensors.get<WearableSensor> {
         while (true) {
             behaviourRef.sendToComponent(sense())
-            delay(100.milliseconds)
+            delay(1000.milliseconds)
         }
     }
 }

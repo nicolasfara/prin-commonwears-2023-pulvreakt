@@ -73,8 +73,8 @@ class WearableComm : Communication<DistanceFromSource> {
     }
 }
 
-internal suspend fun wearableCommLogic(
-    comm: WearableComm,
+suspend fun wearableCommLogic(
+    comm: Communication<DistanceFromSource>,
     behaviourRef: BehaviourRef<DistanceFromSource>,
 ) = coroutineScope {
     val j1 = launch {

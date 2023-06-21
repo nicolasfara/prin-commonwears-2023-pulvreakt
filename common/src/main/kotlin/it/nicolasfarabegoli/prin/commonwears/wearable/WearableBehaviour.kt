@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 import org.koin.core.component.inject
 import kotlin.math.pow
 
-class WearableBehaviour : Behaviour<Unit, DistanceFromSource, SignalStrengthValue, WearableDistances, Unit> {
+class WearableBehaviour : Behaviour<Unit, DistanceFromSource, SignalStrengthValue, WearableDisplayInfo, Unit> {
     override val context: Context by inject()
     private val filter = Filter<Int>(5)
     private val rssiOneMeter = -64
@@ -22,21 +22,22 @@ class WearableBehaviour : Behaviour<Unit, DistanceFromSource, SignalStrengthValu
         state: Unit,
         export: List<DistanceFromSource>,
         sensedValues: SignalStrengthValue,
-    ): BehaviourOutput<Unit, DistanceFromSource, WearableDistances, Unit> {
+    ): BehaviourOutput<Unit, DistanceFromSource, WearableDisplayInfo, Unit> {
         filter.register(sensedValues.rssi)
         val filteredRssi = filter.get().toInt()
         val distance = 10.0.pow((rssiOneMeter - filteredRssi) / (10 * 2.5))
         val neighbourDistance = export.associate { it.deviceId to it.distance }
-        return BehaviourOutput(Unit, DistanceFromSource(context.deviceID, distance), neighbourDistance, Unit)
+        val displayInfo = WearableDisplayInfo(neighbourDistance, distance)
+        return BehaviourOutput(Unit, DistanceFromSource(context.deviceID, distance), displayInfo, Unit)
     }
 }
 
-internal suspend fun wearableBehaviourLogic(
-    behaviour: WearableBehaviour,
+suspend fun wearableBehaviourLogic(
+    behaviour: Behaviour<Unit, DistanceFromSource, SignalStrengthValue, WearableDisplayInfo, Unit>,
     @Suppress("UNUSED_PARAMETER") stateRef: StateRef<Unit>,
     commRef: CommunicationRef<DistanceFromSource>,
     sensorsRef: SensorsRef<SignalStrengthValue>,
-    actuatorsRef: ActuatorsRef<WearableDistances>,
+    actuatorsRef: ActuatorsRef<WearableDisplayInfo>,
 ) = coroutineScope {
     val messages = mutableListOf<DistanceFromSource>()
     val jComm = launch {
