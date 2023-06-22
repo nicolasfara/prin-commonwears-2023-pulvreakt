@@ -23,11 +23,24 @@ class DisplayViewModel : ViewModel() {
         private set
 
     /**
+     * Show if the behaviour is offloaded.
+     */
+    var behaviourOffloaded by mutableStateOf(false)
+        private set
+
+    /**
      * Update the UI state.
      */
     fun update(displayInfo: WearableDisplayInfo) {
         val (distances, myDistance) = displayInfo
         neighbourDistances = distances
         currentDistance = myDistance
+    }
+
+    /**
+     * Set if the behaviour is offloaded or not.
+     */
+    fun behaviourOffloaded(isOffloaded: Boolean) {
+        behaviourOffloaded = isOffloaded
     }
 }

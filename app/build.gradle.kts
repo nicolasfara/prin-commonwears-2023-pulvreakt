@@ -53,6 +53,8 @@ dependencies {
     implementation(libs.bundles.pulvreakt)
     implementation("com.github.weliem:blessed-android-coroutines:0.3.3")
     implementation(project(":common"))
+    implementation(libs.pahoMqtt)
+    implementation(libs.kotlinx.serialization.json)
 
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")

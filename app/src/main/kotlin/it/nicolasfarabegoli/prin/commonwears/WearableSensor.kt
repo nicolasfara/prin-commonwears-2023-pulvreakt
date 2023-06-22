@@ -59,6 +59,10 @@ class WearableSensor(private val context: AndroidContext) : Sensor<SignalStrengt
         startScanning()
     }
 
+    override suspend fun finalize() {
+        btCentralManager.stopScan()
+    }
+
     private fun startScanning() {
         btCentralManager.scanForPeripherals(
             { bluetoothPeripheral, scanResult ->

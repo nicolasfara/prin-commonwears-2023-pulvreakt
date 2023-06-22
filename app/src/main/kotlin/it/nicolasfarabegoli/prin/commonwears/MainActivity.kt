@@ -17,8 +17,15 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.ArrowCircleDown
+import androidx.compose.material.icons.rounded.ArrowCircleUp
+import androidx.compose.material.icons.rounded.Cloud
+import androidx.compose.material.icons.rounded.Key
+import androidx.compose.material.icons.rounded.Smartphone
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
+import androidx.compose.material3.Icon
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -36,6 +43,9 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.lifecycleScope
+import it.nicolasfarabegoli.prin.commonwears.wearable.DistanceFromSource
+import it.nicolasfarabegoli.prin.commonwears.wearable.SignalStrengthValue
+import it.nicolasfarabegoli.prin.commonwears.wearable.WearableDisplayInfo
 import it.nicolasfarabegoli.pulverization.runtime.PulverizationRuntime
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -61,6 +71,8 @@ class MainActivity : ComponentActivity() {
                 else -> askToEnableBluetooth()
             }
         }
+    private lateinit var pulverizationRuntime:
+            PulverizationRuntime<Unit, DistanceFromSource, SignalStrengthValue, WearableDisplayInfo, Unit>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,7 +88,7 @@ class MainActivity : ComponentActivity() {
         Column(modifier = Modifier.padding(all = 7.dp)) {
             Row(modifier = Modifier
                 .padding(all = 7.dp)
-                .align(Alignment.CenterHorizontally)
+                .align(CenterHorizontally)
                 .height(IntrinsicSize.Max)) {
                 var deviceIdText by remember { mutableStateOf(TextFieldValue("")) }
                 TextField(
@@ -84,7 +96,7 @@ class MainActivity : ComponentActivity() {
                     onValueChange = { deviceIdText = it },
                     modifier = Modifier
                         .width(150.dp)
-                        .padding(10.dp, 0.dp),
+                        .padding(7.dp),
                     label = { Text("Device ID")}
                 )
                 Button(
@@ -92,16 +104,20 @@ class MainActivity : ComponentActivity() {
                     enabled = deviceIdText.text != "",
                     modifier = Modifier
                         .weight(1f)
+                        .padding(7.dp)
                         .fillMaxHeight()
                 ) {
                     Text("Start")
                 }
             }
-            Row(modifier = Modifier.padding(all = 7.dp)) {
-                Card(modifier = Modifier
-                    .padding(all = 10.dp)
-                    .fillMaxWidth()
-                ) {
+            Row(modifier = Modifier.padding(all = 7.dp).align(CenterHorizontally)) {
+                Icon(if(display.behaviourOffloaded) Icons.Rounded.Cloud else Icons.Rounded.Smartphone ,
+                    contentDescription = if(display.behaviourOffloaded) "Offloaded" else "Local",
+                    tint = Color.Gray,
+                )
+            }
+            Row(modifier = Modifier.padding(all = 10.dp)) {
+                Card(modifier = Modifier.fillMaxWidth()) {
                     Text("Distance from target",
                         color = Color.Gray,
                         fontSize = 17.sp,
@@ -110,7 +126,9 @@ class MainActivity : ComponentActivity() {
                     Text("%.1f meters".format(display.currentDistance),
                         fontSize = 21.sp,
                         fontWeight = FontWeight.W700,
-                        modifier = Modifier.padding(7.dp).align(CenterHorizontally)
+                        modifier = Modifier
+                            .padding(7.dp)
+                            .align(CenterHorizontally)
                     )
                 }
             }
@@ -159,12 +177,21 @@ class MainActivity : ComponentActivity() {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        lifecycleScope.launch {
+            if (::pulverizationRuntime.isInitialized) {
+                pulverizationRuntime.stop()
+            }
+        }
+    }
+
     private fun startLogic(deviceId: String, displayModel: DisplayViewModel) {
         checkPermissions {
             lifecycleScope.launch {
                 val conf = androidRuntimeConfig(applicationContext, displayModel)
-                val pulvreaktRuntime = PulverizationRuntime(deviceId, "android", conf)
-                pulvreaktRuntime.start()
+                val pulverizationRuntime = PulverizationRuntime(deviceId, "android", conf)
+                pulverizationRuntime.start()
             }
         }
     }
