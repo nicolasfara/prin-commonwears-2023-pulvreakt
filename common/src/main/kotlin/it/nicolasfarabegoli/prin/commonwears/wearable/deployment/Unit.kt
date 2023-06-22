@@ -2,6 +2,9 @@ package it.nicolasfarabegoli.prin.commonwears.wearable.deployment
 
 import it.nicolasfarabegoli.pulverization.runtime.PulverizationRuntime
 
+/**
+ * Entrypoint.
+ */
 suspend fun main(args: Array<String>) {
     require(args.size == 1)
     val runtimeConfig = runtimeConfig(config)

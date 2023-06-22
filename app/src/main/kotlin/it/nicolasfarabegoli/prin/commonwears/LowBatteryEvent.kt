@@ -13,6 +13,10 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 
+/**
+ * Low battery reconfiguration event.
+ * [display] to show the reconfiguration.
+ */
 class LowBatteryEvent(private val display: DisplayViewModel) : ReconfigurationEvent<Double>(), Initializable {
     override suspend fun initialize() {
         display.viewModelScope.launch {
@@ -24,6 +28,13 @@ class LowBatteryEvent(private val display: DisplayViewModel) : ReconfigurationEv
             }
         }
     }
-    override val events: Flow<Double> = generateSequence(100.0) { it - 5.0  }.asFlow().onEach { delay(500) }
-    override val predicate: (Double) -> Boolean = { it < 20.0 }
+    override val events: Flow<Double> = generateSequence(FULL) { it - DISCHARGE  }.asFlow().onEach { delay(DELAY) }
+    override val predicate: (Double) -> Boolean = { it < THRESHOLD }
+
+    companion object {
+        private const val FULL = 100.0
+        private const val DISCHARGE = 5.0
+        private const val THRESHOLD = 20.0
+        private const val DELAY = 500L
+    }
 }
