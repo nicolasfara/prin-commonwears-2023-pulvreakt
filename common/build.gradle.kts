@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.publishOnCentral)
 }
 
 kotlin {
@@ -8,6 +9,41 @@ kotlin {
             kotlinOptions {
                 allWarningsAsErrors = true
                 freeCompilerArgs = listOf("-opt-in=kotlin.RequiresOptIn")
+            }
+        }
+    }
+}
+
+signing {
+    val signingKey: String? by project
+    val signingPassword: String? by project
+    useInMemoryPgpKeys(signingKey, signingPassword)
+}
+
+publishOnCentral {
+    projectLongName.set("Template Kotlin JVM Project")
+    projectDescription.set("A template repository for Kotlin JVM projects")
+    repository("https://maven.pkg.github.com/danysk/${rootProject.name}".toLowerCase()) {
+        user.set("DanySK")
+        password.set(System.getenv("GITHUB_TOKEN"))
+    }
+    publishing {
+        publications {
+            withType<MavenPublication> {
+                pom {
+                    scm {
+                        connection.set("git:git@github.com:nicolasfara/${rootProject.name}")
+                        developerConnection.set("git:git@github.com:nicolasfara/${rootProject.name}")
+                        url.set("https://github.com/nicolasfara/${rootProject.name}")
+                    }
+                    developers {
+                        developer {
+                            name.set("Nicolas Farabegoli")
+                            email.set("nicolas.farabegoli@gmail.com")
+                            url.set("https://www.nicolasfarabegoli.it/")
+                        }
+                    }
+                }
             }
         }
     }

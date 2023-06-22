@@ -6,11 +6,14 @@ import it.nicolasfarabegoli.prin.commonwears.wearable.SignalStrengthValue
 import it.nicolasfarabegoli.prin.commonwears.wearable.WearableBehaviour
 import it.nicolasfarabegoli.prin.commonwears.wearable.WearableComm
 import it.nicolasfarabegoli.prin.commonwears.wearable.WearableDisplayInfo
+import it.nicolasfarabegoli.prin.commonwears.wearable.deployment.Laptop
 import it.nicolasfarabegoli.prin.commonwears.wearable.deployment.Smartphone
 import it.nicolasfarabegoli.prin.commonwears.wearable.deployment.config
 import it.nicolasfarabegoli.prin.commonwears.wearable.deployment.infrastructure
 import it.nicolasfarabegoli.prin.commonwears.wearable.wearableBehaviourLogic
 import it.nicolasfarabegoli.prin.commonwears.wearable.wearableCommLogic
+import it.nicolasfarabegoli.pulverization.dsl.model.Behaviour
+import it.nicolasfarabegoli.pulverization.dsl.model.Communication
 import it.nicolasfarabegoli.pulverization.platforms.mqtt.MqttCommunicator
 import it.nicolasfarabegoli.pulverization.platforms.mqtt.MqttReconfigurator
 import it.nicolasfarabegoli.pulverization.platforms.mqtt.defaultMqttRemotePlace
@@ -30,6 +33,14 @@ suspend fun androidRuntimeConfig(
         WearableComm() withLogic ::wearableCommLogic startsOn Smartphone
         WearableSensorsContainer(context) withLogic ::wearableSensorsLogic startsOn Smartphone
         WearableActuatorsContainer(display) withLogic ::wearableActuatorsLogic startsOn Smartphone
+
+        reconfigurationRules {
+            onDevice {
+                val lowBatteryEvent = LowBatteryEvent()
+                lowBatteryEvent reconfigures { Behaviour movesTo Laptop }
+
+            }
+        }
 
         withCommunicator { MqttCommunicator(hostname = "192.168.8.1", port = 1883) }
         withReconfigurator { MqttReconfigurator(hostname = "192.168.8.1", port = 1883) }
