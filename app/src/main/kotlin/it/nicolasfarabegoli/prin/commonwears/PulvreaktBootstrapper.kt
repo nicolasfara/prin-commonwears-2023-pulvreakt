@@ -8,12 +8,18 @@ import org.eclipse.paho.client.mqttv3.MqttConnectOptions
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence
 import java.util.UUID
 
+/**
+ * TODO
+ */
 class PulvreaktBootstrapper {
     private val deviceId: String = UUID.randomUUID().toString()
     private val topic = "bootstrap/$deviceId"
     private val mqttClient = MqttClient("tcp://$HOSTNAME:$PORT", MqttClient.generateClientId(), MemoryPersistence())
     private val logger = Logger.withTag("MqttCommunicator")
 
+    /**
+     * TODO
+     */
     suspend fun initialize() {
         logger.i { "Setup bootstrapper" }
         val mqttConnectionOption = MqttConnectOptions().apply {
@@ -25,11 +31,17 @@ class PulvreaktBootstrapper {
         }
     }
 
+    /**
+     * TODO
+     */
     suspend fun finalize() = withContext(Dispatchers.IO) {
         mqttClient.publish(topic, "shutdown($deviceId)".toByteArray(), QOS, false)
         mqttClient.disconnect()
     }
 
+    /**
+     * TODO
+     */
     suspend fun bootstrap(): String = withContext(Dispatchers.IO) {
         mqttClient.publish(topic, deviceId.toByteArray(), QOS, false)
         return@withContext deviceId

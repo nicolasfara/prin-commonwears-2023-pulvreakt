@@ -15,6 +15,9 @@ import org.eclipse.paho.client.mqttv3.MqttConnectOptions
 import org.eclipse.paho.client.mqttv3.MqttMessage
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence
 
+/**
+ * TODO
+ */
 class PulvreaktBootstrapper {
     private val mqttClient = MqttClient("tcp://$HOSTNAME:$PORT", MqttClient.generateClientId(), MemoryPersistence())
     private val logger = Logger.withTag("MqttCommunicator")
@@ -31,10 +34,16 @@ class PulvreaktBootstrapper {
         }
     }
 
+    /**
+     * TODO
+     */
     suspend fun finalize() = withContext(Dispatchers.IO) {
         mqttClient.disconnect()
     }
 
+    /**
+     * TODO
+     */
     suspend fun bootstrap(): Flow<String> = callbackFlow {
         val callback = object : MqttCallback {
             override fun connectionLost(cause: Throwable?) {
