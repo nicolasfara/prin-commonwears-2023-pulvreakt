@@ -73,6 +73,7 @@ class MainActivity : ComponentActivity() {
         }
     private lateinit var pulverizationRuntime:
             PulverizationRuntime<Unit, DistanceFromSource, SignalStrengthValue, WearableDisplayInfo, Unit>
+    private var isPulvreaktStarted: Boolean by mutableStateOf(false)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -90,31 +91,33 @@ class MainActivity : ComponentActivity() {
                 .padding(all = 7.dp)
                 .align(CenterHorizontally)
                 .height(IntrinsicSize.Max)) {
-                var deviceIdText by remember { mutableStateOf(TextFieldValue("")) }
-                TextField(
-                    value = deviceIdText,
-                    onValueChange = { deviceIdText = it },
-                    modifier = Modifier
-                        .width(150.dp)
-                        .padding(7.dp),
-                    label = { Text("Device ID")}
-                )
-                Button(
-                    onClick = { startLogic(deviceIdText.text, display) },
-                    enabled = deviceIdText.text != "",
+//                var deviceIdText by remember { mutableStateOf(TextFieldValue("")) }
+//                TextField(
+//                    value = deviceIdText,
+//                    onValueChange = { deviceIdText = it },
+//                    modifier = Modifier
+//                        .width(150.dp)
+//                        .padding(7.dp),
+//                    label = { Text("Device ID")}
+//                )
+                Icon(
+                    if (display.behaviourOffloaded) Icons.Rounded.Cloud else Icons.Rounded.Smartphone,
+                    contentDescription = if (display.behaviourOffloaded) "Offloaded" else "Local",
+                    tint = Color.Gray,
                     modifier = Modifier
                         .weight(1f)
-                        .padding(7.dp)
                         .fillMaxHeight()
+                        .padding(5.dp)
+                )
+                Button(
+                    onClick = { startLogic(display) },
+                    enabled = !isPulvreaktStarted,
+                    modifier = Modifier
+                        .weight(1f)
+                        .fillMaxHeight(),
                 ) {
                     Text("Start")
                 }
-            }
-            Row(modifier = Modifier.padding(all = 7.dp).align(CenterHorizontally)) {
-                Icon(if(display.behaviourOffloaded) Icons.Rounded.Cloud else Icons.Rounded.Smartphone ,
-                    contentDescription = if(display.behaviourOffloaded) "Offloaded" else "Local",
-                    tint = Color.Gray,
-                )
             }
             Row(modifier = Modifier.padding(all = 10.dp)) {
                 Card(modifier = Modifier.fillMaxWidth()) {
@@ -123,7 +126,9 @@ class MainActivity : ComponentActivity() {
                         fontSize = 17.sp,
                         modifier = Modifier.padding(7.dp)
                     )
-                    Text("%.1f meters".format(display.currentDistance),
+                    val currentDistance =
+                        if (display.currentDistance > 0.0) "%.1f meters".format(display.currentDistance) else "--"
+                    Text(currentDistance,
                         fontSize = 21.sp,
                         fontWeight = FontWeight.W700,
                         modifier = Modifier
@@ -186,9 +191,13 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    private fun startLogic(deviceId: String, displayModel: DisplayViewModel) {
+    private fun startLogic(displayModel: DisplayViewModel) {
         checkPermissions {
             lifecycleScope.launch {
+                isPulvreaktStarted = true
+                val bootstrapper = PulvreaktBootstrapper().apply { initialize() }
+                val deviceId = bootstrapper.bootstrap()
+                Log.i("MainActivity", "Device id: $deviceId")
                 val conf = androidRuntimeConfig(applicationContext, displayModel)
                 val pulverizationRuntime = PulverizationRuntime(deviceId, "android", conf)
                 pulverizationRuntime.start()

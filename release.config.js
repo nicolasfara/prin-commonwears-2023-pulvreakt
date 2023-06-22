@@ -12,7 +12,14 @@ config.plugins.push(
             "publishCmd": publishCmd,
         }
     ],
-    "@semantic-release/github",
+    [
+        "@semantic-release/github",
+        {
+            "assets": [
+                { "path": "app/build/**/*.apk", "label": "Android APK" },
+            ]
+        }
+    ],
     "@semantic-release/git",
 )
 module.exports = config
