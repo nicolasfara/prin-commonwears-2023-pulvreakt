@@ -62,7 +62,7 @@ jobs:
         with:
           # Dry-deployment
           build-command: >-
-            ./gradlew app:assembleDebug app:assembleRelease --parallel
+            ./gradlew app:assembleRelease --parallel
       - uses: r0adkll/sign-android-release@v1
         name: Sign app APK
         with:

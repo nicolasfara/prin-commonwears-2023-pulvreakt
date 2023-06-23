@@ -4,7 +4,7 @@ config.plugins.push(
         "@semantic-release/github",
         {
             "assets": [
-                { "path": "app/build/**/*.apk", "label": "Android APK" },
+                { "path": "app/build/**/*signed.apk" },
             ]
         }
     ],
