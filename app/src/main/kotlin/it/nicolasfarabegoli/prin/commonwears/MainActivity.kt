@@ -24,6 +24,7 @@ import androidx.compose.material.icons.rounded.ArrowCircleUp
 import androidx.compose.material.icons.rounded.Cloud
 import androidx.compose.material.icons.rounded.Key
 import androidx.compose.material.icons.rounded.Smartphone
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
@@ -49,9 +50,15 @@ import it.nicolasfarabegoli.prin.commonwears.wearable.DistanceFromSource
 import it.nicolasfarabegoli.prin.commonwears.wearable.SignalStrengthValue
 import it.nicolasfarabegoli.prin.commonwears.wearable.WearableDisplayInfo
 import it.nicolasfarabegoli.pulverization.runtime.PulverizationRuntime
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.net.InetAddress
+import java.net.InetSocketAddress
+import java.net.Socket
+import kotlin.properties.Delegates
 import kotlin.time.Duration.Companion.seconds
 
 /**
@@ -76,12 +83,20 @@ class MainActivity : ComponentActivity() {
     private lateinit var pulverizationRuntime:
             PulverizationRuntime<Unit, DistanceFromSource, SignalStrengthValue, WearableDisplayInfo, Unit>
     private var isPulvreaktStarted: Boolean by mutableStateOf(false)
+    private var isReachable by mutableStateOf(false)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val displayViewModel = DisplayViewModel()
         setContent {
             AppLauncherRow(displayViewModel)
+        }
+        lifecycleScope.launch {
+            while (true) {
+                isReachable = isPortOpen()
+                Log.i("MainAct", "Is open: $isReachable")
+                delay(1.seconds)
+            }
         }
     }
 
@@ -90,7 +105,10 @@ class MainActivity : ComponentActivity() {
     private fun AppLauncherRow(display: DisplayViewModel) {
         AndroidView({ View(it).apply { keepScreenOn = true } })
         Column(modifier = Modifier.padding(all = 7.dp)) {
-            Row(modifier = Modifier.padding(all = 7.dp).align(CenterHorizontally).height(IntrinsicSize.Max)) {
+            Row(modifier = Modifier
+                .padding(all = 7.dp)
+                .align(CenterHorizontally)
+                .height(IntrinsicSize.Max)) {
                 Icon(
                     if (display.behaviourOffloaded) Icons.Rounded.Cloud else Icons.Rounded.Smartphone,
                     contentDescription = if (display.behaviourOffloaded) "Offloaded" else "Local",
@@ -102,10 +120,8 @@ class MainActivity : ComponentActivity() {
                 )
                 Button(
                     onClick = { startLogic(display) },
-                    enabled = !isPulvreaktStarted,
-                    modifier = Modifier
-                        .weight(1f)
-                        .fillMaxHeight(),
+                    enabled = !isPulvreaktStarted && isReachable,
+                    modifier = Modifier.weight(1f).fillMaxHeight(),
                 ) {
                     Text("Start")
                 }
@@ -122,9 +138,7 @@ class MainActivity : ComponentActivity() {
                     Text(currentDistance,
                         fontSize = 21.sp,
                         fontWeight = FontWeight.W700,
-                        modifier = Modifier
-                            .padding(7.dp)
-                            .align(CenterHorizontally)
+                        modifier = Modifier.padding(7.dp).align(CenterHorizontally)
                     )
                 }
             }
@@ -162,6 +176,10 @@ class MainActivity : ComponentActivity() {
         }
     }
 
+    private suspend fun isPortOpen(): Boolean = withContext(Dispatchers.IO) {
+        return@withContext InetAddress.getByName("192.168.8.1").isReachable(TIMEOUT)
+    }
+
     override fun onResume() {
         super.onResume()
         if (bluetoothManager.adapter != null) {
@@ -183,21 +201,28 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun startLogic(displayModel: DisplayViewModel) {
-        checkPermissions {
-            lifecycleScope.launch {
-                isPulvreaktStarted = true
-                val bootstrapper = PulvreaktBootstrapper().apply { initialize() }
-                val deviceId = bootstrapper.bootstrap()
-                Log.i("MainActivity", "Device id: $deviceId")
-                val conf = androidRuntimeConfig(applicationContext, displayModel)
-                val pulverizationRuntime = PulverizationRuntime(deviceId, "android", conf)
-                pulverizationRuntime.start()
+        val result = runCatching {
+            checkPermissions {
+                lifecycleScope.launch {
+                    isPulvreaktStarted = true
+                    val bootstrapper = PulvreaktBootstrapper().apply { initialize() }
+                    val deviceId = bootstrapper.bootstrap()
+                    Log.i("MainActivity", "Device id: $deviceId")
+                    val conf = androidRuntimeConfig(applicationContext, displayModel)
+                    val pulverizationRuntime = PulverizationRuntime(deviceId, "android", conf)
+                    pulverizationRuntime.start()
+                }
             }
         }
+        result.recover { Log.e("MainActivity", "Fail to start the runtime", it) }
     }
 
     private fun askToEnableBluetooth() {
         val enableBtIntent = Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE)
         enableBluetoothRequest.launch(enableBtIntent)
+    }
+
+    companion object {
+        private const val TIMEOUT = 2000
     }
 }
