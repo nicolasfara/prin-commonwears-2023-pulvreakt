@@ -1,3 +1,39 @@
+## 1.0.0 (2023-06-23)
+
+
+### Features
+
+* add bootstrap ([c5ff552](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/c5ff55247697f85f934629fc3fdc439585df56d0))
+
+
+### Documentation
+
+* add missing KDoc ([a6cb948](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/a6cb948c9751c77f5d7ee3a5c88c04daab125af4))
+
+
+### General maintenance
+
+* add reconfiguration ([e980f38](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/e980f385001d9aab02c0d9029a1c8797754ccc5f))
+* prevent screen suspension ([cf59b77](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/cf59b77713ecca74abf8f4c8768302d5733162b2))
+* project setup ([9508846](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/95088467a153a57835c163c8cbe5eb002d88ec6d))
+* setup android project and logic application ([1a37cea](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/1a37ceade0a38c235d0e23de5da52101f5d75ebc))
+* setup ui android ([09f83fd](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/09f83fd9c0b9e9f70202f4726ce718c602c69974))
+* update pulvreakt and add icon for reconfiguration ([62ae8e7](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/62ae8e7113e50076fa50352dc6174a239f93689b))
+
+
+### Style improvements
+
+* fix detekt issues ([fbb6d05](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/fbb6d05c2c382c23c2ed8879443affb2f30f831d))
+* fix detekt issues ([d79980f](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/d79980f1560bbfe6e9b12eacc8b44d5d18ccef8f))
+* fix style issues ([d0857a0](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/d0857a0c35151e8f3c4cbb0af4c775ad443e1eb7))
+* reformat code ([e39a29c](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/e39a29cd2ceb8dc843217391fef3a106494a6998))
+
+
+### Build and continuous integration
+
+* generate apk before their signing ([1260c0c](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/1260c0cebf0e567e6a7fc29ab1398e3600221b03))
+* setup apk publising ([6bc8166](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/6bc816612d780beb4cf0c1ef5cf2589cd9053bbc))
+
 ## [0.1.13](https://github.com/DanySK/Template-for-Kotlin-JVM-Projects/compare/0.1.12...0.1.13) (2023-06-07)
 
 
