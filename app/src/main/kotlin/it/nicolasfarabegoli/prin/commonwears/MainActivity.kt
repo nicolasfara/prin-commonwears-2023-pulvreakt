@@ -90,19 +90,7 @@ class MainActivity : ComponentActivity() {
     private fun AppLauncherRow(display: DisplayViewModel) {
         AndroidView({ View(it).apply { keepScreenOn = true } })
         Column(modifier = Modifier.padding(all = 7.dp)) {
-            Row(modifier = Modifier
-                .padding(all = 7.dp)
-                .align(CenterHorizontally)
-                .height(IntrinsicSize.Max)) {
-//                var deviceIdText by remember { mutableStateOf(TextFieldValue("")) }
-//                TextField(
-//                    value = deviceIdText,
-//                    onValueChange = { deviceIdText = it },
-//                    modifier = Modifier
-//                        .width(150.dp)
-//                        .padding(7.dp),
-//                    label = { Text("Device ID")}
-//                )
+            Row(modifier = Modifier.padding(all = 7.dp).align(CenterHorizontally).height(IntrinsicSize.Max)) {
                 Icon(
                     if (display.behaviourOffloaded) Icons.Rounded.Cloud else Icons.Rounded.Smartphone,
                     contentDescription = if (display.behaviourOffloaded) "Offloaded" else "Local",
