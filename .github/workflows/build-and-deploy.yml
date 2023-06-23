@@ -58,6 +58,11 @@ jobs:
         uses: actions/setup-node@v3.6.0
         with:
           node-version: ${{ steps.node-version.outputs.version }}
+      - uses: DanySK/build-check-deploy-gradle-action@2.2.6
+        with:
+          # Dry-deployment
+          build-command: >-
+            ./gradlew app:assembleDebug app:assembleRelease --parallel
       - uses: r0adkll/sign-android-release@v1
         name: Sign app APK
         with:
