@@ -5,6 +5,7 @@ import android.bluetooth.BluetoothManager
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
@@ -42,6 +43,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.viewinterop.AndroidView
 import androidx.lifecycle.lifecycleScope
 import it.nicolasfarabegoli.prin.commonwears.wearable.DistanceFromSource
 import it.nicolasfarabegoli.prin.commonwears.wearable.SignalStrengthValue
@@ -86,6 +88,7 @@ class MainActivity : ComponentActivity() {
     @Composable
     @Suppress("FunctionNaming")
     private fun AppLauncherRow(display: DisplayViewModel) {
+        AndroidView({ View(it).apply { keepScreenOn = true } })
         Column(modifier = Modifier.padding(all = 7.dp)) {
             Row(modifier = Modifier
                 .padding(all = 7.dp)
