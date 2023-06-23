@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/compare/1.0.0...1.0.1) (2023-06-23)
+
+
+### Bug Fixes
+
+* release only stripped and signed apk ([664df66](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/664df661efd482489b97473e9e3b96d7b65e9c3d))
+
 ## 1.0.0 (2023-06-23)
 
 
