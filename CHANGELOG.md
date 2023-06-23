@@ -1,3 +1,10 @@
+## [1.1.0](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/compare/1.0.1...1.1.0) (2023-06-23)
+
+
+### Features
+
+* prevent start the application if the borker is not reachable ([44f4c72](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/44f4c72d867d9e20bc88325460ad0f696b70905f))
+
 ## [1.0.1](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/compare/1.0.0...1.0.1) (2023-06-23)
 
 
