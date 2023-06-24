@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/compare/1.1.1...1.1.2) (2023-06-24)
+
+
+### Dependency updates
+
+* **core-deps:** update dependency org.jetbrains.kotlinx:kotlinx-serialization-json to v1.5.1 ([85528bd](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/85528bd9eb07b89f23ac5b76521603806779b040))
+
 ## [1.1.1](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/compare/1.1.0...1.1.1) (2023-06-24)
 
 
