@@ -10,7 +10,7 @@ kotest-junit5-jvm = { module = "io.kotest:kotest-runner-junit5-jvm", version.ref
 kotest-assertions-core-jvm = { module = "io.kotest:kotest-assertions-core-jvm", version.ref = "kotest" }
 mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockito" }
 
-kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version = "1.5.0" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version = "1.5.1" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version = "1.7.1" }
 
 pulvreakt-core = { module = "it.nicolasfarabegoli.pulverization-framework:core", version.ref = "pulvreakt" }
