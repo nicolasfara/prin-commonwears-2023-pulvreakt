@@ -2,7 +2,7 @@
 kotest = "5.6.2"
 kotlin = "1.8.21"
 mockito = "5.4.0"
-pulvreakt = "0.7.1"
+pulvreakt = "0.7.2"
 
 [libraries]
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
