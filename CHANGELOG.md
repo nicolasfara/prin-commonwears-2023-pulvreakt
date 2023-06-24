@@ -1,3 +1,20 @@
+## [1.1.1](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/compare/1.1.0...1.1.1) (2023-06-24)
+
+
+### Documentation
+
+* update readme ([1312f85](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/1312f853cac4f4ada7e0c914ceb339060807cf13))
+
+
+### Dependency updates
+
+* **core-deps:** update dependency org.jetbrains.kotlinx:kotlinx-coroutines-android to v1.7.1 ([ef62dd2](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/ef62dd2377b1ec870893aef71d3e44d1b93d5efb))
+* **core-deps:** update dependency org.jetbrains.kotlinx:kotlinx-coroutines-core to v1.7.1 ([aef64ca](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/aef64ca0d7633f7092e2290932ca8d3bc2fc7a99))
+* **deps:** update dependency androidx.compose:compose-bom to v2023.06.01 ([babf942](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/babf942a37916a6f89a2aacfcdba084dd5f38a76))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.38 ([f24e33f](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/f24e33f958461a47dc8122e2761808ccd701102a))
+* **deps:** update plugin kotlin-qa to v0.46.0 ([d824924](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/d82492464d5b77393a2cb2ba21806aa31349bf34))
+* **deps:** update pulvreakt to v0.7.2 ([1874413](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/1874413d5d7e7459cfd08fecb47577f7cdb5a577))
+
 ## [1.1.0](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/compare/1.0.1...1.1.0) (2023-06-23)
 
 
