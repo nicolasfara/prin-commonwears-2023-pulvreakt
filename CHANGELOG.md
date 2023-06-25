@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/compare/1.1.2...1.1.3) (2023-06-25)
+
+
+### Bug Fixes
+
+* add proguard rule config file ([dae79b0](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/dae79b09ad52b7370c6100c6abc9eba13d27e548))
+
 ## [1.1.2](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/compare/1.1.1...1.1.2) (2023-06-24)
 
 
