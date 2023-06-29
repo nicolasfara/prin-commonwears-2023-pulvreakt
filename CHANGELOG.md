@@ -1,3 +1,10 @@
+## [1.1.5](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/compare/1.1.4...1.1.5) (2023-06-29)
+
+
+### Dependency updates
+
+* **core-deps:** update dependency org.jetbrains.kotlinx:kotlinx-coroutines-core to v1.7.2 ([ab7f0ee](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/ab7f0ee98502e09b40dc18ea668e6b28750bfed4))
+
 ## [1.1.4](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/compare/1.1.3...1.1.4) (2023-06-29)
 
 
