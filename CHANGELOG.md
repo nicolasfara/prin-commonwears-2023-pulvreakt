@@ -1,3 +1,10 @@
+## [1.1.4](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/compare/1.1.3...1.1.4) (2023-06-29)
+
+
+### Dependency updates
+
+* **core-deps:** update dependency org.jetbrains.kotlinx:kotlinx-coroutines-android to v1.7.2 ([2e53929](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/2e539291129aa8b557e33e86b110535ccbcf961f))
+
 ## [1.1.3](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/compare/1.1.2...1.1.3) (2023-06-25)
 
 
