@@ -1,3 +1,36 @@
+## [1.1.6](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/compare/1.1.5...1.1.6) (2023-07-25)
+
+
+### Build and continuous integration
+
+* **deps:** update actions/setup-node action to v3.7.0 ([e5b7908](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/e5b79085d3aa9117a085d37cde5a58fe9e75867f))
+* **deps:** update danysk/build-check-deploy-gradle-action action to v2.2.7 ([33ac5bc](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/33ac5bc8649f8ed48eefa78bf42640335b42edfe))
+* **deps:** update danysk/build-check-deploy-gradle-action action to v2.2.8 ([f6eefb2](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/f6eefb2784a27ec05d89f31da399ed4b97dc78cf))
+
+
+### Dependency updates
+
+* **core-deps:** update dependency org.jetbrains.kotlinx:kotlinx-coroutines-android to v1.7.3 ([57a9f96](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/57a9f9699c2d3cc546e7ae850331dd80a6ee4ea1))
+* **core-deps:** update dependency org.jetbrains.kotlinx:kotlinx-coroutines-core to v1.7.3 ([55067e5](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/55067e5e46889f638ec10347567af8bb16da842b))
+* **deps:** update dependency gradle to v8.2 ([40eea11](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/40eea11ada1a034f8c826af9b423b139759b9bcc))
+* **deps:** update dependency gradle to v8.2.1 ([8cad534](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/8cad534615f9e22a33853ff19dd6c236768e83ee))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.39 ([5a7510d](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/5a7510dfc7771f3e7df246622d3a02f1f692840b))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.40 ([553796d](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/553796d996273c1ddd020c66e8f4adf65da85946))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.41 ([6de06f1](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/6de06f1d512419cb46fa30b8d9d5c82e4199ea09))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.42 ([484d4ac](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/484d4ac653a2b06920b757b8db18b79d8157f8f2))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.43 ([03a5596](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/03a559603efba6ed533a22334e3d8c6e4f78afee))
+* **deps:** update node.js to 18.17 ([e740fc6](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/e740fc67b2a4816e93fa919563bc6ab8f3c6b6ef))
+* **deps:** update plugin com.gradle.enterprise to v3.14 ([71f2b21](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/71f2b2124397245631721b66a34591cd22868931))
+* **deps:** update plugin kotlin-qa to v0.46.1 ([0903e78](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/0903e78f2f97748019ff094f1776c83673a5ff5e))
+* **deps:** update plugin kotlin-qa to v0.47.0 ([400f80d](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/400f80d438224faaaa8f02da3bdb4d9c666d069a))
+* **deps:** update plugin kotlin-qa to v0.47.1 ([3d9b01a](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/3d9b01a4bc7b624ba8652944c7d07d0a28632a6a))
+* **deps:** update plugin multijvmtesting to v0.5.3 ([7839205](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/783920501a3a354cc8b438bc03e6f57d3acc9284))
+* **deps:** update plugin multijvmtesting to v0.5.4 ([3e51137](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/3e51137758c50d516ababaf3cdec0ecfbb8ac8e4))
+* **deps:** update plugin org.gradle.toolchains.foojay-resolver-convention to v0.6.0 ([a29f2aa](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/a29f2aa43b6fdf7b16c5219560a1a8965483653a))
+* **deps:** update plugin publishoncentral to v5.0.10 ([a9532a6](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/a9532a66f953e9a43abc5aca9e731bc4205c9614))
+* **deps:** update plugin publishoncentral to v5.0.8 ([a5454ec](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/a5454ecbb061b2e4baae2d11352d88efc500666a))
+* **deps:** update plugin publishoncentral to v5.0.9 ([5095fcd](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/5095fcda002bb57fd3128962a5e8832c7c5ae307))
+
 ## [1.1.5](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/compare/1.1.4...1.1.5) (2023-06-29)
 
 
