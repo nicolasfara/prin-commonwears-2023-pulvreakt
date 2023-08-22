@@ -1,3 +1,26 @@
+## [1.1.7](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/compare/1.1.6...1.1.7) (2023-08-22)
+
+
+### Build and continuous integration
+
+* **deps:** update actions/setup-node action to v3.8.0 ([4c4b0a8](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/4c4b0a8ad6fd79165c48b0fd3fe5ff23a851f7dd))
+* **deps:** update actions/setup-node action to v3.8.1 ([2b52a8d](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/2b52a8d8992a6a93d8b714df32b00d189fa5fc84))
+
+
+### Dependency updates
+
+* **core-deps:** update dependency org.jetbrains.kotlinx:kotlinx-serialization-json to v1.6.0 ([25e16aa](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/25e16aa6a4bd30015f9b5eaf106ebfb1ceae583d))
+* **deps:** update dependency androidx.compose:compose-bom to v2023.08.00 ([5283cf5](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/5283cf55de36d4ac071971082f4d5a8bd5b113a5))
+* **deps:** update dependency gradle to v8.3 ([aa3c3c9](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/aa3c3c918369c9d3c957a81745d299a75bcd181d))
+* **deps:** update dependency org.mockito:mockito-core to v5.5.0 ([6916885](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/6916885eca0e25c183156f18997eba1df006aeb2))
+* **deps:** update plugin android to v8.1.0 ([b6050d2](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/b6050d291ee21fe6cc5f34312e5a30651b5da1d0))
+* **deps:** update plugin android to v8.1.1 ([1710acd](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/1710acd5d48f2e6ae9cbcfd49b11e4ab7ee0808d))
+* **deps:** update plugin com.gradle.enterprise to v3.14.1 ([8a93edc](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/8a93edca0f43ae0c92f93819bd9bb1a8e46e9bc0))
+* **deps:** update plugin kotlin-qa to v0.48.0 ([9450564](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/945056499d80fc9f800a30a30cbe7790cee9d095))
+* **deps:** update plugin kotlin-qa to v0.49.0 ([dcf0f8c](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/dcf0f8cceb8232e393063e0bff69fb36e1a6cdab))
+* **deps:** update plugin org.gradle.toolchains.foojay-resolver-convention to v0.7.0 ([e62fb57](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/e62fb57cc1e2359ce69db305b065df3da2557e7a))
+* **deps:** update plugin publishoncentral to v5.0.11 ([c3e3db2](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/c3e3db26194bbcb75b1da32370e07a8e39f5da6e))
+
 ## [1.1.6](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/compare/1.1.5...1.1.6) (2023-07-25)
 
 
