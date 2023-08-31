@@ -1,3 +1,25 @@
+## [1.1.8](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/compare/1.1.7...1.1.8) (2023-08-31)
+
+
+### Build and continuous integration
+
+* **deps:** update actions/checkout action to v3.6.0 ([d49ea61](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/d49ea61ba8e55201ed5aaa699e692b8db8b823b6))
+* **deps:** update danysk/action-checkout action to v0.2.11 ([434db72](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/434db72b9cf659aa02aedeb6ac6a0ed12f8dda4a))
+
+
+### Dependency updates
+
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.44 ([a86ae3e](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/a86ae3e2f7a916fb21a0dfba01a503ec057236ff))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.46 ([7cc6d73](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/7cc6d7378c4bdcde91c4b3f418d4868ce4af6edb))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.47 ([f83307e](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/f83307ee86011c78f99013ad3afbc215c1ff3bd9))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.49 ([3b6288b](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/3b6288b82bd8b9433442c83c72f79b6d78dfd323))
+* **deps:** update plugin publishoncentral to v5.0.12 ([91a5aa4](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/91a5aa423a4b7c2a595847d1cd0571e29b65cbae))
+
+
+### Documentation
+
+* **deps:** update plugin dokka to v1.9.0 ([69a6250](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/commit/69a6250cc1bca254104449d9ac5c3485fe8eb15a))
+
 ## [1.1.7](https://github.com/nicolasfara/prin-commonwears-2023-pulvreakt/compare/1.1.6...1.1.7) (2023-08-22)
 
 
