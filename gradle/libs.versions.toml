@@ -24,7 +24,7 @@ kotlin-testing = [ "kotest-junit5-jvm", "kotest-assertions-core-jvm", "mockito-c
 pulvreakt = [ "pulvreakt-core", "pulvreakt-platform", "pulvreakt-mqtt" ]
 
 [plugins]
-dokka = "org.jetbrains.dokka:1.8.20"
+dokka = "org.jetbrains.dokka:1.9.0"
 gitSemVer = "org.danilopianini.git-sensitive-semantic-versioning:1.1.10"
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
