@@ -51,7 +51,7 @@ dependencies {
     androidTestImplementation(composeBom)
 
     implementation(libs.bundles.pulvreakt)
-    implementation("com.github.weliem:blessed-android-coroutines:0.4.0")
+    implementation("com.github.weliem:blessed-android-coroutines:0.4.2")
     implementation(project(":common"))
     implementation(libs.pahoMqtt)
     implementation(libs.kotlinx.serialization.json)
