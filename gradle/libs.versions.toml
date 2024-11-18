@@ -1,6 +1,6 @@
 [versions]
 kotest = "5.9.1"
-kotlin = "1.9.25"
+kotlin = "2.0.21"
 mockito = "5.14.2"
 pulvreakt = "0.7.2"
 
