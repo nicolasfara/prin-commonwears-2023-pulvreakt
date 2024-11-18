@@ -32,5 +32,5 @@ kotlin-qa = "org.danilopianini.gradle-kotlin-qa:0.63.0"
 multiJvmTesting = "org.danilopianini.multi-jvm-test-plugin:0.5.8"
 publishOnCentral = "org.danilopianini.publish-on-central:5.0.26"
 taskTree = "com.dorongold.task-tree:3.0.0"
-android = "com.android.application:8.6.1"
+android = "com.android.application:8.7.2"
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
