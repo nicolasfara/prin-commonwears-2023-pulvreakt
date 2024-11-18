@@ -56,7 +56,7 @@ dependencies {
     implementation(libs.pahoMqtt)
     implementation(libs.kotlinx.serialization.json)
 
-    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("androidx.appcompat:appcompat:1.7.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0")
 
     // Choose one of the following:
