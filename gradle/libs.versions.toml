@@ -1,7 +1,7 @@
 [versions]
 kotest = "5.9.1"
 kotlin = "1.9.25"
-mockito = "5.12.0"
+mockito = "5.14.2"
 pulvreakt = "0.7.2"
 
 [libraries]
